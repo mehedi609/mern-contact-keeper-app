@@ -1,9 +1,13 @@
 const express = require('express');
+const connectDB = require('./config/db');
 const users = require('./routes/users');
 const contacts = require('./routes/contacts');
 const auth = require('./routes/auth');
 
 const app = express();
+
+// Connect DB
+connectDB();
 
 app.get('/', (req, res) => {
   res.json({
