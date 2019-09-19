@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
+
+let db = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+);
+
+db = db.replace('<db_name>', process.env.DATABASE_NAME);
 
 const connectDB = async () => {
   try {
